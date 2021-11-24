@@ -9,11 +9,17 @@ intents:
   - translate
 
 entities:
- - phrase
- - lang
+  - phrase
+  - begin_phrase
+  - end_phrase
+  - lang
 
 slots:
   phrase:
+    type: text
+  begin_phrase:
+    type: text
+  end_phrase:
     type: text
   lang:
     type: text

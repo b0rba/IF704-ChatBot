@@ -14,10 +14,12 @@ class ActionTranslate(Action):
         return "action_translate"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        slots = tracker.current_slot_values()
-        print(slots)
-        sentence = slots["phrase"]
-        language = slots["lang"]
+        latest_message = tracker.latest_message
+        begin_translate_index = latest_message['entities'][0]['end']
+        end_translate_index = latest_message['entities'][1]['start']
+
+        sentence = latest_message['text'][begin_translate_index:end_translate_index]
+        language = tracker.get_slot('lang')
 
         if is_empty_or_none(sentence) or is_empty_or_none(language):
             dispatcher.utter_message(text="Sorry I don't have enough information to translate")
