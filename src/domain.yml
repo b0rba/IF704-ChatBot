@@ -35,7 +35,7 @@ responses:
   - text: "Great, carry on!"
 
   utter_sad:
-  - text: "Sorry to hear that."
+  - text: "Sorry! Can u rephrase like: 'how can i say <sentence> in <language>?"
 
   utter_goodbye:
   - text: "Bye"
