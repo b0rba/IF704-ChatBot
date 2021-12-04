@@ -2,75 +2,62 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
+- story: translate happy path
   steps:
   - user: |
       hello there!
     intent: greet
   - action: utter_greet
   - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: sad path 1
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
+      can you tell me how i would [say](begin_translate) [tomtoldmehissecret](phrase) [in](end_translate) [french](lang)
+    intent: translate
+  - action: action_translate
   - action: utter_did_that_help
   - user: |
       yes
     intent: affirm
   - action: utter_happy
 
-- story: sad path 2
+- story: translate sad path retry
   steps:
   - user: |
-      hello
+      hello there!
     intent: greet
   - action: utter_greet
   - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
+      can you tell me how i would [say](begin_translate) [tomtoldmehissecret](phrase) [in](end_translate) [french](lang)
+    intent: translate
+  - action: action_translate
   - action: utter_did_that_help
   - user: |
-      not really
+      no
     intent: deny
-  - action: utter_goodbye
+  - action: utter_sad
+  - user: |
+      how can i [say](begin_translate) [tomtoldmehissecret](phrase) [in](end_translate) [french](lang)
+    intent: translate
+  - action: action_translate
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
 
-- story: sad path 3
+- story: translate sad path retry
   steps:
   - user: |
-      hi
+      hello there!
     intent: greet
   - action: utter_greet
   - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
+      can you tell me how i would [say](begin_translate) [tomtoldmehissecret](phrase) [in](end_translate) [french](lang)
+    intent: translate
+  - action: action_translate
   - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_sad
   - user: |
       no
     intent: deny
@@ -89,3 +76,10 @@ stories:
       are you a bot?
     intent: bot_challenge
   - action: utter_iamabot
+
+- story: respond faq
+  steps:
+  - user: |
+      Where is the highest mountain in the planet?
+    intent: faq
+  - action: utter_faq

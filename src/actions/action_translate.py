@@ -30,5 +30,4 @@ class ActionTranslate(Action):
             dispatcher.utter_message(text=u"The translation is: {}".format(response))
         except KeyError:
             dispatcher.utter_message(text="Sorry I can't translate to this language.")
-
         return []

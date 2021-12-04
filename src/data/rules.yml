@@ -11,3 +11,18 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: respond to FAQs
+  steps:
+  - intent: faq
+  - action: utter_faq
+
+- rule: Welcome telegram bot
+  steps:
+  - intent: start
+  - action: utter_start_bot
+
+- rule: Goodbye telegram bot
+  steps:
+  - intent: stop
+  - action: utter_stop_bot

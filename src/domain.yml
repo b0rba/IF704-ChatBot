@@ -7,6 +7,9 @@ intents:
   - deny
   - bot_challenge
   - translate
+  - faq
+  - start
+  - stop
 
 entities:
   - phrase
@@ -26,7 +29,7 @@ slots:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! How can i help you?"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -46,7 +49,31 @@ responses:
   utter_translation:
     - text: "You want to translate {phrase} to {lang}, don't you?"
 
+  utter_start_bot:
+    - text: "Welcome from telegram bot"
+
+  utter_stop_bot:
+    - text: "Goodbye from telegram bot"
+
+  utter_faq/ask_building:
+    - text: "The building Burj Khalifa is located in Dubai, since 2010 is the tallest building on earth with 828m."
+
+  utter_faq/ask_mountain:
+    - text: "Mountain Everest, height of 8.848m, located on Nepal, China."
+
+  utter_faq/ask_city:
+    - text: "City of Malé, on the Maldives. With population of 153,904 on a area of 1,956km², density of 78,683km²"
+
+  utter_faq/ask_coastline:
+    - text: "Canada is the country with more coastline length, with 265.523km two time more than second which is the USA by World Resource Institute."
+
+  utter_faq/ask_tourist:
+    - text: "France, with 89.4 million by a 2018 study. But with you count the tourist receipts, tourist on USA spent US$214.7 billion on 2018, France in third with US$ 66 billion."
+
 actions:
+  - utter_start_bot
+  - utter_stop_bot
+  - utter_faq
   - action_translate
   - utter_did_that_help
   - utter_happy
